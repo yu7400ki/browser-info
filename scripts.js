@@ -38,3 +38,4 @@ const getBrowserInfo = () => {
 
 window.addEventListener("load", getBrowserInfo);
 window.addEventListener("resize", getBrowserInfo);
+dispatchEvent(new Event("load"));
