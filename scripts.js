@@ -20,18 +20,8 @@ const getBrowserInfo = () => {
   };
 
   const table = document.querySelector("#browser-info");
-  table.innerHTML = "";
-  const thead = document.createElement("thead");
-  const tbody = document.createElement("tbody");
-
-  const headerRow = thead.insertRow();
-  const headerCell1 = document.createElement("th");
-  headerCell1.textContent = "Property";
-  headerRow.appendChild(headerCell1);
-
-  const headerCell2 = document.createElement("th");
-  headerCell2.textContent = "Value";
-  headerRow.appendChild(headerCell2);
+  const tbody = table.querySelector("tbody");
+  tbody.innerHTML = "";
 
   const rows = Object.entries(info);
 
@@ -43,7 +33,6 @@ const getBrowserInfo = () => {
     cell2.textContent = value;
   });
 
-  table.appendChild(thead);
   table.appendChild(tbody);
 };
 
