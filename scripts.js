@@ -36,6 +36,9 @@ const getBrowserInfo = () => {
   table.appendChild(tbody);
 };
 
+const refreshButton = document.querySelector("#refresh");
+refreshButton.addEventListener("click", getBrowserInfo);
+
 window.addEventListener("load", getBrowserInfo);
 window.addEventListener("resize", getBrowserInfo);
 dispatchEvent(new Event("load"));
