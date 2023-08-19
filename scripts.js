@@ -36,9 +36,36 @@ const getBrowserInfo = () => {
   table.appendChild(tbody);
 };
 
+window.addEventListener("error", (event) => {
+  const { message, error } = event;
+
+  let table = document.querySelector("#error-info");
+  if (!table) {
+    table = document.createElement("table");
+    table.id = "error-info";
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>Error</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    `;
+    document.body.appendChild(table);
+  }
+
+  const tbody = table.querySelector("tbody");
+  const row = tbody.insertRow();
+  const cell1 = row.insertCell();
+  const cell2 = row.insertCell();
+  cell1.textContent = error;
+  cell2.textContent = message;
+  table.appendChild(tbody);
+})
+
 const refreshButton = document.querySelector("#refresh");
 refreshButton.addEventListener("click", getBrowserInfo);
 
 window.addEventListener("load", getBrowserInfo);
 window.addEventListener("resize", getBrowserInfo);
-dispatchEvent(new Event("load"));
